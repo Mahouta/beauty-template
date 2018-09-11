@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            var html = "";
+            var test = "";
+            $.getJSON("https://cors.io/?https://api.myglamapp.pl/api/categories?language=EN", function (result) {
+                //console.log(result);
+
+                for (i = 0; i < result.data.length; i++) {
+                    console.log(i);
+
+                    html +=
+                        "<div class='card'>" +
+                        "<h3 class='card-title text-center'>" + result.data[i].label + "</h3>" +
+                        "<img class='imgservices card-img-top' src='http://" + result.data[i].imagePath + "'/>" +
+                        "<div class='card-body bord'>" +
+
+
+                        "<p class='card-text font-italic font-weight-bold text-center'>" + result.data[i].description + "</p>";
+
+
+                    for (j = 0; j < result.data[i].Services.length; j++) {
+                        html +=
+                            "<p class='font-weight-bold'>" + result.data[i].Services[j].label_service + " : </p>" +
+                            "<p>" + result.data[i].Services[j].description_service + "</p>";
+
+                    }
+                    html += "</div></div></div>";
+                    document.getElementById("articles").innerHTML = html;
+                }
+            }
+            );
+        });
+    </script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <h3>Our services</h3>
+                <img src="images\title _line_category_1@1x.png">
+            </div>
+        </div>
+
+        <br><br>
+
+        <div id="articles" class="row"></div>
+    </div>
+
+
+    <script src="fichierJS.js"></script>
+    <script src="moreText.js"></script>
+</body>
+
+</html>
