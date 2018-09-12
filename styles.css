@@ -201,7 +201,6 @@ img{
     font-size: 10%;
 }
 
-
 .cpt {
     padding-bottom: 25%;
 }
@@ -221,7 +220,7 @@ border-radius: 100%;
 }
 
 .imgservices {
-margin: auto;
+    margin: auto;
     width: 50%;
     height: 50%;
 }

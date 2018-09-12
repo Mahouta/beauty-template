@@ -15,7 +15,6 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
@@ -35,18 +34,23 @@
                         "<h3 class='card-title text-center'>" + result.data[i].label + "</h3>" +
                         "<img class='imgservices card-img-top' src='http://" + result.data[i].imagePath + "'/>" +
                         "<div class='card-body bord'>" +
-
-
-                        "<p class='card-text font-italic font-weight-bold text-center'>" + result.data[i].description + "</p>";
+                        "<p class='card-text font-italic font-weight-bold text-center'>" + result.data[i].description + "</p>"+
+                        "<div class='row'>";
 
 
                     for (j = 0; j < result.data[i].Services.length; j++) {
                         html +=
-                            "<p class='font-weight-bold'>" + result.data[i].Services[j].label_service + " : </p>" +
-                            "<p>" + result.data[i].Services[j].description_service + "</p>";
-
+                            "<div class='col-4'>" +
+                            "<div class='card-deck'>" +
+                            "<div class='card'>" +
+                            "<div class='card-body'>" +
+                            "<h5 class='card-title text-center'>" + result.data[i].Services[j].label_service + "</h5>" +
+                            "<p class='card-text'>" + result.data[i].Services[j].description_service + "</p>" +
+                            "</div></div></div></div>"
+                            
+                            
                     }
-                    html += "</div></div></div>";
+                    html += "</div></div></div></div>";
                     document.getElementById("articles").innerHTML = html;
                 }
             }
